@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring :
+  datasource :
+    url : jdbc:mysql://localhost:3306/school_crm?useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 2010
+  jpa:
+    hibernate:
+      ddl-auto : update
+      show_sql: true
