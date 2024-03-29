@@ -1,0 +1,43 @@
+<h2 class="text-center">SEARCH TEACHER</h2>
+<br>
+<p class="text-center">Search the teacher's full name you want ot search, <br>then you'll see the result automatically while typing.</p>
+<br>
+<hr>
+<br>
+<div class="input-group mb-3">
+    <input [(ngModel)]="searchInput" type="text" class="form-control" placeholder="Search teacher's full name" aria-label="Full Name" aria-describedby="basic-addon1">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+</div>
+<br>
+<hr>
+<br>
+<div class="d-flex justify-content-center">
+    <div *ngIf="!teacherList" class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<table class="table table-hover" *ngIf="teacherList">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Institute</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Classroom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let teacher of filteredTeacherList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{teacher.fullName}}</td>
+            <td>{{teacher.institute}}</td>
+            <td>{{teacher.contactNumber}}</td>
+            <td>{{teacher.dob}}</td>
+            <td>{{teacher.subject}}</td>
+            <td>{{teacher.classroom.batchNumber}}</td>
+        </tr>
+    </tbody>
+</table>

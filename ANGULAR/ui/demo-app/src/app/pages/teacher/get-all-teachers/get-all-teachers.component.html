@@ -1,0 +1,35 @@
+<h2 class="text-center">GET ALL TEACHERS</h2>
+<br>
+<p class="text-center">Here you can view all the teachers. <br>Remember, if you want to do something else with a teacher'data, <br>choose one of the links in header and side bar.</p>
+<br>
+<hr>
+<div class="d-flex justify-content-center">
+    <div *ngIf="!teacherList" class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<table class="table table-hover" *ngIf="teacherList">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Institute</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Classroom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let teacher of teacherList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{teacher.fullName}}</td>
+            <td>{{teacher.institute}}</td>
+            <td>{{teacher.contactNumber}}</td>
+            <td>{{teacher.dob}}</td>
+            <td>{{teacher.subject}}</td>
+            <td>{{teacher.classroom.batchNumber}}</td>
+        </tr>
+    </tbody>
+</table>

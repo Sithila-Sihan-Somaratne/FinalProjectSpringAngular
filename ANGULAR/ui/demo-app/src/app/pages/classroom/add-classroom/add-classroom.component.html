@@ -1,0 +1,59 @@
+<h2 class="text-center">ADD CLASSROOM</h2>
+<br>
+<p class="text-center">Add a classroom right now. <br>Fill all the fields.</p>
+<br>
+<hr>
+<div class="container" [formGroup]="form">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Batch Number</label>
+        <input type="text" class="form-control" [(ngModel)]="classroom.batchNumber" placeholder="CLG5D" formControlName="batchNumber">
+    </div>
+    <div *ngIf="form.controls.batchNumber.invalid && (form.controls.batchNumber.dirty || form.controls.batchNumber.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.batchNumber?.errors?.['required']">
+          Batch number is required and should start with CL(class) + G(Grade) grade number + letter from A to M.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Colour</label>
+        <input type="text" class="form-control" [(ngModel)]="classroom.color" placeholder="color name" formControlName="color">
+    </div>
+    <div *ngIf="form.controls.color.invalid && (form.controls.color.dirty || form.controls.color.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.color?.errors?.['required']">
+          Colour is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Number of seats</label>
+        <input type="number" class="form-control" [(ngModel)]="classroom.numbSeats" placeholder="Number of seats" formControlName="numberSeats">
+    </div>
+    <div *ngIf="form.controls.numberSeats.invalid && (form.controls.numberSeats.dirty || form.controls.numberSeats.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.numberSeats?.errors?.['required']">
+          Number of seats is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Number of desks</label>
+        <input type="number" class="form-control" [(ngModel)]="classroom.numbDesks" placeholder="Number of desks" formControlName="numberDesks">
+    </div>
+    <div *ngIf="form.controls.numberDesks.invalid && (form.controls.numberDesks.dirty || form.controls.numberDesks.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.numberDesks?.errors?.['required']">
+          Number of desks is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <button (click)="saveClassroom()" id="liveToastBtn" type="submit" class="btn btn-outline-success">Save classroom</button>
+    </div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img id="icon" src="..." class="rounded me-2" alt="...">
+            <strong class="me-auto">School Platform -- Classroom Portal</strong>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p id="txt"></p>
+        </div>
+    </div>
+</div>

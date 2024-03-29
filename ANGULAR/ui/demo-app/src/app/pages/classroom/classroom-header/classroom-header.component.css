@@ -1,0 +1,15 @@
+.green-links{
+    color: #198754; 
+}
+.green-links:hover{
+    color: #125f3b;
+}
+.green-active{
+    padding: 5 10 10 5;
+    border-radius: 10px;
+    background-color: #198754 !important;
+}
+.green-active:hover{
+    color: #fff;
+    background-color: #125f3b !important;
+}

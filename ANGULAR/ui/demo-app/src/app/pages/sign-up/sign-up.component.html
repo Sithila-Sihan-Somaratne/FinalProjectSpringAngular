@@ -1,0 +1,134 @@
+<main class="form-signup w-100 m-auto">
+    <form [formGroup]="form">
+        <br><br>
+        <h1 class="h3 mb-3 fw-normal">
+            SIGN UP
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                <path fill-rule="evenodd"
+                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+            </svg>
+        </h1>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Name Surname"
+                [(ngModel)]="user.name" ngModelOptions="{standalone: true}" formControlName="userName">
+            <label for="floatingInput">Full name</label>
+        </div>
+        <div *ngIf="form.controls.userName.invalid && (form.controls.userName.dirty || form.controls.userName.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+            <div *ngIf="form.controls.userName?.errors?.['required']">
+              Full name is required.
+            </div>
+        </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                [(ngModel)]="user.email" ngModelOptions="{standalone: true}" formControlName="userEmail">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div *ngIf="form.controls.userEmail.invalid && (form.controls.userEmail.dirty || form.controls.userEmail.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+            <div *ngIf="form.controls.userEmail?.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="form.controls.userEmail?.errors?.['email']">
+              Please enter a valid email.
+            </div>
+        </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" [(ngModel)]="obj.email"
+                placeholder="name@example.com" ngModelOptions="{standalone: true}" formControlName="objEmail">
+            <label for="floatingInput">Please enter email address again</label>
+        </div>
+        <div *ngIf="form.controls.objEmail.invalid && (form.controls.userEmail.dirty || form.controls.objEmail.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+            <div *ngIf="form.controls.objEmail?.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="form.controls.objEmail?.errors?.['email']">
+              Please enter a valid email.
+            </div>
+        </div>
+        <div class="form-floating">
+            <input type="tel" class="form-control" id="floatingInput" placeholder="+00 000 000 000"
+                [(ngModel)]="user.contactNumber" ngModelOptions="{standalone: true}" formControlName="userContact">
+            <label for="floatingInput">Contact Number</label>
+        </div>
+        <div *ngIf="form.controls.userContact.invalid && (form.controls.userName.dirty || form.controls.userContact.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+            <div *ngIf="form.controls.userContact?.errors?.['required']">
+              Contact number is required.
+            </div>
+        </div>
+        <div class="form-floating">
+            <input type="tel" class="form-control" id="floatingInput" [(ngModel)]="obj.contactNumber"
+                placeholder="+00 000 000 000" ngModelOptions="{standalone: true}" formControlName="objContact">
+            <label for="floatingInput">Please enter contact number again</label>
+        </div>
+        <div *ngIf="form.controls.objContact.invalid && (form.controls.userName.dirty || form.controls.objContact.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+            <div *ngIf="form.controls.objContact?.errors?.['required']">
+              Contact number is required.
+            </div>
+        </div>
+        <div class="form-floating">
+            <input [type]="hide ? 'password' : 'text'" class="form-control" id="floatingPassword" placeholder="Password"
+                [(ngModel)]="user.pwd" ngModelOptions="{standalone: true}" formControlName="userPwd">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div *ngIf="form.controls.userPwd.invalid && (form.controls.userPwd.dirty || form.controls.userPwd.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+            <div *ngIf="form.controls.userPwd?.errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="form.controls.userPwd?.errors?.['minlength']">
+              Password must be at least 8 characters long.
+            </div>
+            <div *ngIf="form.controls.userPwd?.errors?.['pattern']">
+              Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.
+            </div>
+        </div>
+        <div class="form-floating">
+            <input [type]="hide ? 'password' : 'text'" class="form-control" id="floatingPassword" [(ngModel)]="obj.pwd"
+                placeholder="Password" ngModelOptions="{standalone: true}" formControlName="objPwd">
+            <label for="floatingPassword">Please enter password again</label>
+        </div>
+        <div *ngIf="form.controls.objPwd.invalid && (form.controls.objPwd.dirty || form.controls.objPwd.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+            <div *ngIf="form.controls.objPwd?.errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="form.controls.objPwd?.errors?.['minlength']">
+              Password must be at least 8 characters long.
+            </div>
+            <div *ngIf="form.controls.objPwd?.errors?.['pattern']">
+              Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.
+            </div>
+        </div>
+        <div class="form-check text-start my-3">
+            <div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="hide"
+                    (change)="hide = !hide">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Show password
+                </label>
+            </div>
+        </div>
+        <br><br>
+        <button id="liveToastBtn" class="btn btn-primary w-100 py-2" type="submit" (click)="signUpUser()">Sign
+            up</button>
+    </form>
+    <br><br>
+    <p class="text-center">
+        Back to
+        <a class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-0-hover" routerLink="/">log
+            in</a>
+    </p>
+</main>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img id="icon" src="..." class="rounded me-2" alt="...">
+            <strong class="me-auto">School Platform</strong>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p id="txt"></p>
+        </div>
+    </div>
+</div>

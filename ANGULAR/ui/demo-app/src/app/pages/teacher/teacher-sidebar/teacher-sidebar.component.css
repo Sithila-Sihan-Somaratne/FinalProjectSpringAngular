@@ -1,0 +1,15 @@
+.grey-links{
+    color: #6c757d; 
+}
+.grey-links:hover{
+    color: #50575d;
+}
+.grey-active{
+    padding: 5 10 10 5;
+    border-radius: 10px;
+    background-color: #6c757d !important;
+}
+.grey-active:hover{
+    color: #fff;
+    background-color: #50575d !important;
+}

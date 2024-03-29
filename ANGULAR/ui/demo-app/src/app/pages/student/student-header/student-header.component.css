@@ -1,0 +1,15 @@
+.red-links{
+    color: #dc3545; 
+}
+.red-links:hover{
+    color: #bc2c3a;
+}
+.red-active{
+    padding: 5 10 10 5;
+    border-radius: 10px;
+    background-color: #dc3545 !important;
+}
+.red-active:hover{
+    color: #fff;
+    background-color: #bc2c3a !important;
+}

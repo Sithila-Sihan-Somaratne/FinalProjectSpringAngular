@@ -1,0 +1,71 @@
+<h2 class="text-center">ADD STUDENT</h2>
+<br>
+<p class="text-center">Add a student right now. <br>Fill all the fields.</p>
+<br>
+<hr>
+<div class="container" [formGroup]="form">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+        <input type="text" class="form-control" [(ngModel)]="student.fullName" placeholder="Full Name" formControlName="fullName">
+    </div>
+    <div *ngIf="form.controls.fullName.invalid && (form.controls.fullName.dirty || form.controls.fullName.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.fullName?.errors?.['required']">
+          Full name is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Institute</label>
+        <input type="text" class="form-control" [(ngModel)]="student.institute" placeholder="Institute name" formControlName="institute">
+    </div>
+    <div *ngIf="form.controls.institute.invalid && (form.controls.institute.dirty || form.controls.institute.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.institute?.errors?.['required']">
+          Institute is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Classroom</label>
+        <input type="text" class="form-control" [(ngModel)]="student.classroom.batchNumber" placeholder="Classroom name" formControlName="classroom">
+    </div>
+    <div *ngIf="form.controls.classroom.invalid && (form.controls.classroom.dirty || form.controls.classroom.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.classroom?.errors?.['required']">
+            Classroom is required and should start with CL(class) + G(Grade) grade number + letter from A to M.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
+        <input type="tel" class="form-control" [(ngModel)]="student.contactNumber" placeholder="+00 000 000 0000" formControlName="contactNumber">
+    </div>
+    <div *ngIf="form.controls.contactNumber.invalid && (form.controls.contactNumber.dirty || form.controls.contactNumber.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.contactNumber?.errors?.['required']">
+          Contact number is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Date of Birth(YYYY-MM-DD)</label>
+        <input type="text" class="form-control" [(ngModel)]="student.dob" placeholder="Date of Birth(YYYY-MM-DD)" formControlName="dob">
+    </div>
+    <div *ngIf="form.controls.dob.invalid && (form.controls.dob.dirty || form.controls.dob.touched)" style="color: red; font-size: 15px; font-weight: 700;">
+        <div *ngIf="form.controls.dob?.errors?.['required']">
+          DOB is required.
+        </div>
+        <div *ngIf="form.controls.dob.errors?.['pattern'] && form.controls.dob.touched">
+            Please enter a valid date in the format YYYY-MM-DD.
+        </div>
+    </div>
+    <div class="mb-3">
+        <button (click)="saveStudent()" id="liveToastBtn" type="submit" class="btn btn-outline-danger">Save Student</button>
+    </div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img id="icon" src="..." class="rounded me-2" alt="...">
+            <strong class="me-auto">School Platform -- Student Portal</strong>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p id="txt"></p>
+        </div>
+    </div>
+</div>

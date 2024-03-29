@@ -1,0 +1,31 @@
+<h2 class="text-center">GET ALL CLASSROOMS</h2>
+<br>
+<p class="text-center">Here you can view all the classrooms. <br>Remember, if you want to do something else with a student's data, <br>choose one of the links in header and side bar.</p>
+<br>
+<hr>
+<div class="d-flex justify-content-center">
+    <div *ngIf="!classroomList" class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<table class="table table-hover" *ngIf="classroomList">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Batch Number</th>
+            <th scope="col">Color</th>
+            <th scope="col">Number of desks</th>
+            <th scope="col">Number of seats</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let classroom of classroomList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{classroom.batchNumber}}</td>
+            <td>{{classroom.color}}</td>
+            <td>{{classroom.numbDesks}}</td>
+            <td>{{classroom.numbSeats}}</td>
+        </tr>
+    </tbody>
+</table>

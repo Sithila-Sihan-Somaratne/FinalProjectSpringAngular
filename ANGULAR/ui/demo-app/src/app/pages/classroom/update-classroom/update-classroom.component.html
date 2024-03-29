@@ -1,0 +1,59 @@
+<h2 class="text-center">UPDATE CLASSROOM</h2>
+<br>
+<p class="text-center">First of all, click the row of the student you want to update. <br>Then, in the fields modify the content of the student you want to update <br> and then click the update button to set the details.</p>
+<br>
+<hr>
+<div class="d-flex justify-content-center">
+    <div *ngIf="!classroomList" class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<table class="table table-hover" *ngIf="classroomList">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Batch Number</th>
+            <th scope="col">Color</th>
+            <th scope="col">Number of desks</th>
+            <th scope="col">Number of seats</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let classroom of classroomList; let i = index" (click)="selectRow(classroom)">
+            <th scope="row">{{i+1}}</th>
+            <td>{{classroom.batchNumber}}</td>
+            <td>{{classroom.color}}</td>
+            <td>{{classroom.numbDesks}}</td>
+            <td>{{classroom.numbSeats}}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<hr>
+<br>
+<div class="container">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Batch Number</label>
+        <input type="text" class="form-control" [(ngModel)]="classroomObj.batchNumber" placeholder="Full Name" id="batchNumberTxt">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Color</label>
+        <input type="text" class="form-control" [(ngModel)]="classroomObj.color" placeholder="Color of the classroom" id="colorTxt">
+    </div>
+
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Number of desks</label>
+        <input type="text" class="form-control" [(ngModel)]="classroomObj.numbDesks" placeholder="Number of desks" id="numberDesksTxt">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Number of seats</label>
+        <input type="text" class="form-control" [(ngModel)]="classroomObj.numbSeats" placeholder="Number of seats" id="numberSeatsTxt">
+    </div>
+
+    <div class="mb-3">
+        <button (click)="updateClassroom()" class="btn btn-outline-success">Update Classroom</button>
+    </div>
+</div>

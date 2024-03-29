@@ -1,0 +1,39 @@
+<h2 class="text-center">SEARCH CLASSROOM</h2>
+<br>
+<p class="text-center">Search the classroom's batch number you want ot search, <br>then you'll see the result automatically while typing.</p>
+<br>
+<hr>
+<br>
+<div class="input-group mb-3">
+    <input [(ngModel)]="searchInput" type="text" class="form-control" placeholder="Search classroom batch number" aria-label="Full Name" aria-describedby="basic-addon1">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+</div>
+<br>
+<hr>
+<br>
+<div class="d-flex justify-content-center">
+    <div *ngIf="!classroomList" class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<table class="table table-hover" *ngIf="classroomList">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Batch Number</th>
+            <th scope="col">Color</th>
+            <th scope="col">Number of desks</th>
+            <th scope="col">Number of seats</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let classroom of filtredClassroomList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{classroom.batchNumber}}</td>
+            <td>{{classroom.color}}</td>
+            <td>{{classroom.numbDesks}}</td>
+            <td>{{classroom.numbSeats}}</td>
+        </tr>
+    </tbody>
+</table>

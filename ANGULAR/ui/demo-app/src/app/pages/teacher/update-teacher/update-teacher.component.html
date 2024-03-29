@@ -1,0 +1,73 @@
+<h2 class="text-center">UPDATE TEACHER</h2>
+<br>
+<p class="text-center">First of all, click the row of the teacher you want to update. <br>Then, in the fields modify the content of the student you want to update <br> and then click the update button to set the details.</p>
+<br>
+<hr>
+<div class="d-flex justify-content-center">
+    <div *ngIf="!teacherList" class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<table class="table table-hover" *ngIf="teacherList">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Institute</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Classroom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let teacher of teacherList; let i = index" (click)="selectRow(teacher)">
+            <th scope="row">{{i+1}}</th>
+            <td>{{teacher.fullName}}</td>
+            <td>{{teacher.institute}}</td>
+            <td>{{teacher.contactNumber}}</td>
+            <td>{{teacher.dob}}</td>
+            <td>{{teacher.subject}}</td>
+            <td>{{teacher.classroom.batchNumber}}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<hr>
+<br>
+<div class="container">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+        <input type="text" class="form-control" [(ngModel)]="teacherObj.fullName" placeholder="Full Name" id="fullNameTxt">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Institute</label>
+        <input type="text" class="form-control" [(ngModel)]="teacherObj.institute" placeholder="Institute" id="instituteTxt">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
+        <input type="text" class="form-control" [(ngModel)]="teacherObj.contactNumber" placeholder="Contact Number" id="contactNumberTxt">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Date of Birth(YYYY-MM-DD)</label>
+        <input type="text" class="form-control" [(ngModel)]="teacherObj.dob" placeholder="Date of Birth(YYYY-MM-DD)" id="DOBTxt">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Subject</label>
+        <input type="text" class="form-control" [(ngModel)]="teacherObj.subject" placeholder="Subject" id="subjectTxt">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Classroom Id</label>
+        <input type="text" class="form-control" [(ngModel)]="teacherObj.classroom.batchNumber" placeholder="Classroom Id" id="classroomIdTxt">
+    </div>
+
+    <div class="mb-3">
+        <button (click)="updateTeacher()" class="btn btn-outline-secondary">Update Teacher</button>
+    </div>
+</div>
